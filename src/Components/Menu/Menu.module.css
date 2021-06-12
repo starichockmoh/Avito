@@ -1,0 +1,9 @@
+.MenuText{
+    font-size: 30%;
+    position: sticky;
+    top: 16em;
+}
+
+.MenuItem{
+    font-size: 20px;
+}

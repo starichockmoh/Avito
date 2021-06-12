@@ -1,0 +1,31 @@
+.AdInfoPhotos{
+    width: 800px;
+    text-align: center;
+    margin: 20px;
+    height: 500px;
+}
+
+.Comment{
+    margin-right: 20px;
+}
+
+.Desc{
+    margin-left: 40px;
+    font-size: 20px;
+}
+
+.Title{
+    border-radius: 6px;
+    background-image: url("./../../Images/header.jpg");
+    height: 100px;
+    padding: 20px;
+}
+
+.AdAuthor{
+    font-weight: bold;
+    font-size: 70%;
+}
+
+.AdCreated{
+    font-size: 80%;
+}

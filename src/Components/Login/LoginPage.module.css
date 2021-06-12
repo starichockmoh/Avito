@@ -1,0 +1,12 @@
+.Login{
+    margin-right: 60%;
+
+}
+
+.Welcome{
+    margin: 50px;
+    background-image: url("./../../Images/header.jpg");
+    border-radius: 6px;
+    height: 100px;
+    padding: 20px;
+}

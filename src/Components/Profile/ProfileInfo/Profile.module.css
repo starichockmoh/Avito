@@ -1,0 +1,35 @@
+.ProfileInfo{
+    display: grid;
+    grid-template-columns: 2fr 4fr;
+    grid-template-rows: 5fr 100%;
+    grid-template-areas:
+    "Avatar Avatar"
+    "DescBlock Ads";
+}
+
+.Avatar{
+    grid-area: Avatar;
+    display: grid;
+    grid-template-columns: 1fr 5fr;
+    border-radius: 6px;
+    background-image: url("./../../../Images/header.jpg");
+
+}
+.DescBlock{
+    grid-area: DescBlock;
+}
+.Ads{
+    grid-area: Ads;
+}
+.AvatarImage{
+    margin: 5px;
+}
+.Avatar h1{
+    text-align: center;
+    margin: 5px;
+    padding-right: 30px;
+}
+.Ads h2{
+    text-align: center;
+    margin: 10px;
+}

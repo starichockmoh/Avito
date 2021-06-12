@@ -1,0 +1,12 @@
+.ads{
+    margin-right: 25px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+ul{
+    list-style: none;
+}
+.AdsBoard{
+
+}
