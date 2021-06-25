@@ -1,3 +1,35 @@
+export type UserProfileType = {
+    email: string
+    get_posts: Array<GetUserPostType>
+    pk: number
+    selected_posts: Array<GetUserPostType>
+    username: string
+}
+export type GetUserPostType = {
+    created_at: string
+    image: NullableType<string>
+    pk: number
+    price: number
+    rubric: number
+    title: string
+    views: number
+}
+
+export type TrueAdInfoType = {
+    author: string
+    created_at: string
+    get_aditionall_image: Array<any>
+    get_comments: Array<any>
+    image: NullableType<string>
+    pk: number
+    price: number
+    title: string
+    views: number
+}
+
+export type TrueCommentType = {
+
+}
 export type AdsType = {
     name: string
     price: number

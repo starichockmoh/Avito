@@ -1,34 +1,22 @@
-import React from "react";
+import React, {useEffect} from "react";
 import {compose} from "redux";
-import {connect} from "react-redux";
-import {AppStateType} from "../../Redux/Store";
-import {ProfileType} from "../Types/Types";
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
 import withAuthRedirect from "../../HOCs/withAuthRedirect";
+import {useDispatch, useSelector} from "react-redux";
+import {AppStateType} from "../../Redux/Store";
+import {getProfile} from "../../Redux/Reducers/ProfileReducer";
 
-type MapStateToPropsType = {
-    Profile: ProfileType
+
+const ProfilePage = () =>  {
+    const dispatch = useDispatch()
+    const Profile = useSelector((state: AppStateType) => state.Profile.ProfileInfo)
+    useEffect(() => {
+        dispatch(getProfile())
+    }, [dispatch])
+    return <div>
+        <ProfileInfo Profile={Profile}/>
+    </div>;
 }
-type MapDispatchToPropsType = {}
-
-type PropsType = MapDispatchToPropsType & MapStateToPropsType
-class Profile extends React.Component<PropsType>{
-    render() {
-        return <div>
-            <ProfileInfo Profile = {this.props.Profile}/>
-        </div>;
-    }
-}
 
 
-let mapStateToProps = (state: AppStateType): MapStateToPropsType => ({
-    Profile: state.Profile
-})
-
-const ProfileContainer: any = compose(
-    connect<MapStateToPropsType, MapDispatchToPropsType, {}, AppStateType>(mapStateToProps, {}),
-    withAuthRedirect
-)(Profile)
-
-
-export default ProfileContainer
+export default ProfilePage

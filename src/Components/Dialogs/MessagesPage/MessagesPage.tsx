@@ -10,40 +10,30 @@ import {Button} from "antd";
 import {DialogType} from "../../Types/Types";
 import withAuthRedirect from "../../../HOCs/withAuthRedirect";
 
-type MapStateToPropsType = {
-    Dialog: DialogType
-    CurrentUserId: number
-}
-type MapDispatchToPropsType = {}
+// type MapStateToPropsType = {
+//     Dialog: DialogType
+//     CurrentUserId: number
+// }
+// type MapDispatchToPropsType = {}
+//
+// type PropsType = MapStateToPropsType & MapDispatchToPropsType
 
-type PropsType = MapStateToPropsType & MapDispatchToPropsType
-
-class MessagesPage extends React.Component<PropsType>{
+class MessagesPage extends React.Component{
     render() {
-        let FriendAvatar = this.props.Dialog.Participant.Avatar
-        let FriendName = this.props.Dialog.Participant.User
-        let MessagesArray = this.props.Dialog.Messages.map(m => {
-            if (m.Sender === this.props.CurrentUserId) {
-                return <MyMessage key = {m.MessageId} Message={m}/>
-            }
-            return <Message FriendAvatar = {FriendAvatar} key = {m.MessageId} Message={m} FriendName={FriendName}/>
-        })
+        // let FriendAvatar = this.props.Dialog.Participant.Avatar
+        // let FriendName = this.props.Dialog.Participant.User
+        // let MessagesArray = this.props.Dialog.Messages.map(m => {
+        //     if (m.Sender === this.props.CurrentUserId) {
+        //         return <MyMessage key = {m.MessageId} Message={m}/>
+        //     }
+        //     return <Message FriendAvatar = {FriendAvatar} key = {m.MessageId} Message={m} FriendName={FriendName}/>
+        // })
         return <div>
-            {MessagesArray}
-            <TextArea/>
-            <Button>Send</Button>
+            {/*{MessagesArray}*/}
+            {/*<TextArea/>*/}
+            {/*<Button>Send</Button>*/}
         </div>
     }
 }
 
-let mapStateToProps = (state: AppStateType):MapStateToPropsType => ({
-    Dialog: state.Dialogs.Dialog,
-    CurrentUserId: state.Profile.UserId
-})
-
-const MessagesPageContainer:any = compose(
-    connect<MapStateToPropsType, MapDispatchToPropsType, {}, AppStateType>(mapStateToProps, {}),
-    withAuthRedirect
-)(MessagesPage)
-
-export default MessagesPageContainer
+export default MessagesPage

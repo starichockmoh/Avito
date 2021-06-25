@@ -1,48 +1,32 @@
-import {DialogsDataType, DialogType} from "../../Components/Types/Types";
+import {ActionsType, DialogsDataType, DialogType} from "../../Components/Types/Types";
+import {authAPI, dialogsAPI, profileAPI} from "../../Api/Api";
+import {ThunkAction} from "redux-thunk";
+import {AppStateType} from "../Store";
 
-type InitialStateType = {
-    Dialogs: Array<DialogsDataType>
-    Dialog: DialogType
 
-
+let InitialState = {
+    Dialogs: {},
+    CurrentDialog: {}
 }
 
-let InitialState: InitialStateType = {
-    Dialogs: [
-        {
-            Participant: {
-                Avatar: 'https://get.wallhere.com/photo/white-T-shirt-sunglasses-glasses-photography-moustache-military-boy-cool-man-beard-cigar-vision-care-facial-hair-eyewear-stern-human-behavior-790615.jpg',
-                User: 'Mark',
-                UserId: 3
-            }, DialogId: 1, Title: 'Mark'
-        },
-        {
-            Participant: {
-                Avatar: 'https://get.wallhere.com/photo/white-T-shirt-sunglasses-glasses-photography-moustache-military-boy-cool-man-beard-cigar-vision-care-facial-hair-eyewear-stern-human-behavior-790615.jpg',
-                User: 'Mark',
-                UserId: 3
-            }, DialogId: 1, Title: 'Mark'
-        }
-    ],
-    Dialog: {
-        DialogId: 1, Messages: [
-            {MessageId: '1', Sender: 1, Text: 'Upiuu', Thread: 1},
-            {MessageId: '2', Sender: 3, Text: 'arara', Thread: 1},
-            {MessageId: '3', Sender: 3, Text: 'Whata Fuckk', Thread: 1},
-            {MessageId: '4', Sender: 3, Text: 'Kuda??', Thread: 1},
-            {MessageId: '5', Sender: 1, Text: 'Upiuu', Thread: 1}
-        ],
-        Participant: {Avatar: 'https://get.wallhere.com/photo/white-T-shirt-sunglasses-glasses-photography-moustache-military-boy-cool-man-beard-cigar-vision-care-facial-hair-eyewear-stern-human-behavior-790615.jpg', User: 'Mark', UserId: 3}, Title: 'Mark'
-    }
-}
+type InitialStateType = typeof InitialState
 
-const DialogReducer = (state = InitialState, action: any): InitialStateType => {
+const DialogReducer = (state = InitialState, action: DialogsActionsType): InitialStateType => {
     switch (action.type) {
         default:
             return state
     }
 }
 
+type ThunkType = ThunkAction<Promise<void>, AppStateType, any, DialogsActionsType>
+type DialogsActionsType = ActionsType<typeof DialogsActions>
+
+const DialogsActions = {}
+
+export const GetDialogs = (): ThunkType =>
+    async (dispatch) => {
+        let data = await dialogsAPI.getDialogs()
+    }
 
 export default DialogReducer
 

@@ -9,11 +9,12 @@ type PropsType = {
     Price: number
     Title: string
     Views: number
-    Description: string
 
 }
 
-const AdDescription: React.FC<PropsType> = ({AdId,Author, Created_at, Price, Title,Views,Description }) => {
+const AdDescription: React.FC<PropsType> = ({AdId,Author, Created_at, Price, Title,Views }) => {
+    let Description= 'We supply a series of design principles, practical patterns and high quality design resources (Sketch and Axure), to help people create their product prototypes beautifully and efficiently.' +
+'We supply a series of design principles, practical patterns and high quality design resources (Sketch and Axure), to help people create their product'
     return <div className={styles.Desc}>
         <h2>{Price} ₽ </h2>
         <p><EyeOutlined/> {Views}</p>

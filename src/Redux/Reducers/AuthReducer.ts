@@ -8,8 +8,7 @@ let InitialState = {
 }
 
 type InitialStateType = typeof InitialState
-type ThunkType = ThunkAction<Promise<void>, AppStateType, any, AuthActionsType>
-type AuthActionsType = ActionsType<typeof AuthActions>
+
 
 const AuthReducer = (state = InitialState, action: AuthActionsType): InitialStateType => {
     switch (action.type) {
@@ -27,6 +26,9 @@ const AuthReducer = (state = InitialState, action: AuthActionsType): InitialStat
 const AuthActions = {
     AuthUser: () => ({type: 'AUTH_USER'} as const)
 }
+
+type ThunkType = ThunkAction<Promise<void>, AppStateType, any, AuthActionsType>
+type AuthActionsType = ActionsType<typeof AuthActions>
 
 export const Login = (name: string, password: string): ThunkType =>
     async (dispatch) => {

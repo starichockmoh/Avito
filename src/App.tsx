@@ -48,7 +48,7 @@ const MainContent: React.FC = () => {
             <Route path={'/profile/:userId?'} render={() => <ProfileContainer/>}/>
             <Route path={'/ad/:adId?'} render={() => <AdInfoContainer/>}/>
             <Route path ={'/dialogs'} render={() => <DialogPageContainer/>}/>
-            <Route path={'/dialog/:dialogId?'} render={() => <MessagesPageContainer/>}/>
+            {/*<Route path={'/dialog/:dialogId?'} render={() => <MessagesPageContainer/>}/>*/}
             <Route path={'/login'} render={() => <LoginPageContainer/>}/>
             <Route path={'/createad'} render={() => <CreateAddPageContainer/>}/>
         </Switch>

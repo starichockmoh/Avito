@@ -2,10 +2,8 @@ import React from 'react';
 import 'antd/dist/antd.css';
 import { Form, Input, Button, Checkbox } from 'antd';
 import styles from "./LoginPage.module.css"
-
-type PropsType = {
-    Login: (name: string, password: string) => void
-}
+import {useDispatch} from "react-redux";
+import {Login} from "../../Redux/Reducers/AuthReducer";
 
 const layout = {
     labelCol: {
@@ -22,9 +20,10 @@ const tailLayout = {
     },
 };
 
-const LoginForm: React.FC<PropsType> = ({Login}) => {
+const LoginForm: React.FC = () => {
+    const dispatch = useDispatch()
     const onFinish = (values: any) => {
-        Login(values.username, values.password)
+        dispatch(Login(values.username, values.password))
 
     };
 
