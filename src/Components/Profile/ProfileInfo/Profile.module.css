@@ -12,7 +12,7 @@
     display: grid;
     grid-template-columns: 1fr 5fr;
     border-radius: 6px;
-    background-image: url("./../../../Images/header.jpg");
+    background-image: url("./../../../Images/Header.jpg");
 
 }
 .DescBlock{

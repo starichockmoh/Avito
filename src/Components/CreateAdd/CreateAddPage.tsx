@@ -3,8 +3,11 @@ import {Button, Form, Input, Select, Upload} from "antd";
 import styles from "./CreateAddPage.module.css"
 import TextArea from "antd/es/input/TextArea";
 import {PlusOutlined} from "@ant-design/icons";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {postNewAd} from "../../Redux/Reducers/AdsReducer";
+import {AppStateType} from "../../Redux/Store";
+import {Redirect} from "react-router-dom";
+import withAuthRedirect from "../../HOCs/withAuthRedirect";
 
 const {Option} = Select;
 
@@ -20,10 +23,15 @@ const CreateAddPageContainer = () =>  {
     const onFinish = (values: ValuesType) => {
         dispatch(postNewAd(values.adName, Number(values.adCategory),
             Number(values.adPrice), values.adPhoto && values.adPhoto.fileList[0].originFileObj))
-        console.log(values)
     };
+    const CreateWasSuccess = useSelector((state: AppStateType) => state.Ads.CreateWasSuccess)
+    const ErrorMessage = useSelector((state: AppStateType) => state.Ads.ErrorMessage)
+    if (CreateWasSuccess) {
+        return <Redirect to={"/ads"}/>
+    }
     return <div>
         <h1> Create Add </h1>
+        <div className={styles.ErrorBlock}>{ErrorMessage && ErrorMessage.message}</div>
         <Form
             name="basic"
             onFinish={onFinish}
@@ -35,7 +43,7 @@ const CreateAddPageContainer = () =>  {
             <Form.Item name="adCategory" rules={[{required: true}]}>
                 <Select placeholder="Select a category">
                     <Option value= "2">Cars</Option>
-                    <Option value="3">Appliances</Option>
+                    <Option value="3">Houses</Option>
                     <Option value="4">Real estate</Option>
                     <Option value="5">Your things</Option>
                 </Select>
@@ -63,4 +71,4 @@ const CreateAddPageContainer = () =>  {
 }
 
 
-export default CreateAddPageContainer
+export default withAuthRedirect(CreateAddPageContainer)

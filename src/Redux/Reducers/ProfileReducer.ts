@@ -35,6 +35,10 @@ export const getProfile = (): ThunkType =>
         const data = await profileAPI.getProfile()
         dispatch(ProfileActions.SetProfileInfo(data))
     }
+export const changeProfile = (username: string,pk: number): ThunkType =>
+    async (dispatch) => {
+        const data = await profileAPI.changeProfile(username, pk)
+    }
 
 export default ProfileReducer
 

@@ -8,9 +8,9 @@ import {AppStateType} from "../../Redux/Store";
 
 const LoginPage = () => {
     const isAuth = useSelector((state:AppStateType) => state.Auth.isAuth)
-    // if (isAuth){
-    //     return <Redirect to={"/profile"}/>
-    // }
+    if (isAuth){
+        return <Redirect to={"/profile"}/>
+    }
     return <div>
         <div className={styles.Welcome}>
             <h1>WelCOME To Huito!!!</h1>

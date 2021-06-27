@@ -8,6 +8,7 @@ import styles from "./AdsBoard.module.css"
 import SearchAds from "./Search/Search";
 import {getAllAds, postNewAd} from "../../Redux/Reducers/AdsReducer";
 import {Paginator} from "../Paginator/Paginator";
+import withAuthRedirect from "../../HOCs/withAuthRedirect";
 
 const AdsBoard = () =>  {
     const dispatch = useDispatch()
@@ -35,4 +36,4 @@ const AdsBoard = () =>  {
 }
 
 
-export default AdsBoard
+export default withAuthRedirect(AdsBoard)

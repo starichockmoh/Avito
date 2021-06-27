@@ -1,11 +1,8 @@
 import React, {useEffect} from "react";
-import {AdInfoType} from "../Types/Types";
-import {compose} from "redux";
-import {connect, useDispatch, useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {AppStateType} from "../../Redux/Store";
-import {useParams, withRouter} from "react-router-dom";
+import {useParams} from "react-router-dom";
 import AdInfoPhotos from "./AdInfoPhotos";
-import Comments from "./Comments";
 import AdDescription from "./AdDescription";
 import styles from "./AdInfo.module.css"
 import {GetAdInfo} from "../../Redux/Reducers/AdInfoReducer";
@@ -24,7 +21,7 @@ const AdInfo = () => {
             <h1>{AdInfo.title}</h1>
         </div>
 
-        <AdInfoPhotos Photos={AdInfo.get_aditionall_image}/>
+        <AdInfoPhotos AdditionalPhotos={AdInfo.get_aditionall_image} AvatarPhoto={AdInfo.image}/>
 
         <AdDescription AdId={AdInfo.pk} Author={AdInfo.author}
                        Created_at={AdInfo.created_at} Price={AdInfo.price}

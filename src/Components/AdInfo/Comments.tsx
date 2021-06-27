@@ -68,8 +68,6 @@ const CommentItem: React.FC<CommentPropsType> = ({CommentInfo}) => {
         </Tooltip>,
 
     ];
-
-
     return (
         <Comment
             actions={actions}

@@ -6,10 +6,11 @@ import styles from "./MyAds.module.css"
 
 type PropsType = {
     UserAds: Array<GetUserPostType>
+    IsSelected: boolean
 }
 
-const MyAds: React.FC<PropsType> = ({UserAds}) => {
-    let MyAdsArray = UserAds? UserAds.map(ad => <MyAdItem AdInfo={ad}/>) : []
+const MyAds: React.FC<PropsType> = ({UserAds, IsSelected}) => {
+    let MyAdsArray = UserAds? UserAds.map(ad => <MyAdItem AdInfo={ad} IsSelected={IsSelected}/>) : []
     return <>
         <ul className={styles.MyAds}>
             {MyAdsArray}

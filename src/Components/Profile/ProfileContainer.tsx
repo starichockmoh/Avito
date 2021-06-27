@@ -19,4 +19,4 @@ const ProfilePage = () =>  {
 }
 
 
-export default ProfilePage
+export default withAuthRedirect(ProfilePage)

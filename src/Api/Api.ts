@@ -38,6 +38,9 @@ export const profileAPI = {
     getProfile(){
         return instanse.get<UserProfileType>('account/profile_page/')
             .then((res) => {return res.data})
+    },
+    changeProfile(username: string,pk: number ){
+        return instanse.put(`profile/profile_page/${pk}/`, {username, pk})
     }
 }
 
@@ -58,6 +61,7 @@ export const adsAPI = {
         formData.append("title", title)
         formData.append("rubric", String(rubric))
         formData.append("price", String(price))
+        // image && formData.append('get_aditionall_image', [image] as any)
         return instanse.post('',formData)
             .then((res) => {
             })
@@ -74,8 +78,19 @@ export const adsAPI = {
                 return res
             })
     },
+    // putImages(image:any){
+    //     const formData = new FormData()
+    //     image && formData.append("get_aditionall_image", [image] as any)
+    //     formData.append("title", 'Дом1')
+    //     formData.append('author', 'admin')
+    //     formData.append('get_comments','[]' as any)
+    //     return instanse.put('post/2/', formData)
+    // },
     addToSelected(adID:number){
         return instanse.post('account/add_selected_post/'+ adID + '/')
+    },
+    postComment(content:string, bb: number, author: UserProfileType){
+        return instanse.post('comments/', {content, bb, author})
     }
 }
 
